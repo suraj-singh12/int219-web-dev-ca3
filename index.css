@@ -18,11 +18,16 @@ canvas {
 
 .initial-instr {
   font-family: 'Belleza', sans-serif;
+  
   position: relative;
   top: 5em;
-  left: 10em;
   display: inline-block;
   font-size: 3em;
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
+  left: 0;
+  right: 0;
 }
 
 .head {
