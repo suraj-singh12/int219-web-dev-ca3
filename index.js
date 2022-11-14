@@ -16,9 +16,12 @@ document.querySelector(".gear").addEventListener("click", function () {
 
 
 // fill array with random values on clicking `random` button
-document.querySelector("#rand").addEventListener("click", randomiz);
-function randomiz() {
-  if (sort_start != true) {
+document.querySelector("#rand").addEventListener("click", randomize);
+function randomize() {
+
+  // validation: check if sorting is not going on, only then proceed
+  if (sort_start != true) {   
+  
     document.getElementsByClassName('initial-instr')[0].style.display = 'none';   // hide the initial instruction
     // set the required global values
     started = true;
@@ -44,6 +47,9 @@ function randomiz() {
 // fill the user entered values on clicking `manual` button
 document.querySelector("#man").addEventListener("click", manual);
 function manual() {
+
+  
+  // validation: check if sorting is not going on, only then proceed
   if (sort_start != true) {
 
     document.getElementsByClassName('initial-instr')[0].style.display = 'none'; // hide the initial instruction
@@ -81,8 +87,11 @@ function manual() {
 // start the algorithm on clicking play button
 document.querySelector(".btn").addEventListener("click", start); // attach the play button to algorithm starter function
 function start() {
+
   document.querySelector(".set").classList.remove("opened");  // hide drop down
   console.log(sort_start, " : ", started);
+
+  // validate the array, and ensure algo is not started yet
   if (sort_start != true && started == true) {
     sort_start = true;
     insertionSort(values, values.length);   // call the algo
@@ -94,7 +103,7 @@ async function insertionSort(arr, n) {
   if (n <= 1)   // base case
     return;
 
-  await insertionSort(arr, n - 1);    // recursively call untill n = 1
+  await insertionSort(arr, n - 1);    // recursively call until n = 1
 
   let last = arr[n - 1];
   let j = n - 2;
@@ -134,7 +143,9 @@ async function insertionSort(arr, n) {
 }
 
 // re-draw every time on screen so that it appears like animation while sorting is running
-function draw() {     // for creaeCanvas() to work
+function draw() {     // for createCanvas() to work
+
+  // validate the starting of the canvas
   if (started) {
     // background 
     background('#7494EA');
